@@ -1,0 +1,30 @@
+Patient Medical Report
+
+Patient ID: 12345
+Name: John Doe
+Date of Birth: 1985-03-15
+Date of Visit: 2024-01-15
+
+Chief Complaint:
+Patient presents with persistent cough and shortness of breath for the past 2 weeks.
+
+History of Present Illness:
+The patient reports a dry, non-productive cough that began approximately 2 weeks ago. 
+Associated with mild shortness of breath on exertion. No fever, chest pain, or weight loss.
+Patient denies recent travel or sick contacts.
+
+Physical Examination:
+- Vital Signs: BP 120/80, HR 78, RR 16, Temp 98.6°F, O2 Sat 98%
+- General: Alert, well-appearing, in no acute distress
+- Chest: Clear to auscultation bilaterally, no wheezes or crackles
+- Heart: Regular rate and rhythm, no murmurs
+
+Assessment and Plan:
+1. Persistent cough - likely viral upper respiratory infection
+   - Recommend supportive care with rest and hydration
+   - Follow up if symptoms worsen or persist beyond 4 weeks
+   
+2. Return to clinic if symptoms worsen or new symptoms develop
+
+Provider: Dr. Smith, MD
+Date: 2024-01-15

@@ -1,0 +1,55 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "example-doc-ref-001",
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34133-9",
+        "display": "Summary of episode note"
+      }
+    ],
+    "text": "Medical Report"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://ihe.net/xds/connectathon/classCodes",
+          "code": "History and Physical",
+          "display": "History and Physical"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/12345",
+    "display": "John Doe"
+  },
+  "date": "2024-01-15T10:30:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/dr-smith",
+      "display": "Dr. Smith, MD"
+    }
+  ],
+  "custodian": {
+    "reference": "Organization/hospital-001",
+    "display": "General Hospital"
+  },
+  "description": "Patient medical report for John Doe - respiratory symptoms evaluation",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "language": "en-US",
+        "url": "file://example/sample_document.txt",
+        "size": 1030,
+        "hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "title": "Medical Report - John Doe - 2024-01-15",
+        "creation": "2024-01-15T10:30:00Z"
+      }
+    }
+  ]
+}
