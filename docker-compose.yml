@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  fhir2medkit:
+    build: .
+    image: fhir2medkit:latest
+    container_name: fhir2medkit
+    volumes:
+      # Mount the current directory to allow for live development
+      - .:/app
+      # Mount a volume for any output files
+      - ./output:/app/output
+    environment:
+      - PYTHONPATH=/app
+    # Override default command for interactive development
+    # Uncomment the next line to run interactively
+    # command: /bin/bash
+    
+  # Service to run tests
+  test:
+    build: .
+    image: fhir2medkit:latest
+    volumes:
+      - .:/app
+    command: python test.py
+    
+  # Service to run a custom Python script
+  run:
+    build: .
+    image: fhir2medkit:latest
+    volumes:
+      - .:/app
+      - ./output:/app/output
+    # Override this command when running: docker-compose run run python your_script.py
+    command: ["python", "-c", "print('Use: docker compose run run python your_script.py')"]
