@@ -7,13 +7,11 @@ import requests
 
 from fhir.resources.documentreference import DocumentReference
 from medkit.core.text import TextDocument
-from medkit.core.audio import AudioDocument, MemoryAudioBuffer
 
 # ---- helpers ---------------------------------------------------------------
 
 TEXT_MIME_PREFIXES = ("text/",)
 PDF_MIME = "application/pdf"
-AUDIO_MIME_PREFIXES = ("audio/",)
 
 def _get_attachment(dr: DocumentReference):
     if not dr.content:
@@ -60,8 +58,6 @@ def _extract_text_from_pdf(pdf_bytes: bytes) -> str:
 def _is_text_like(content_type: str) -> bool:
     return content_type.startswith(TEXT_MIME_PREFIXES)
 
-def _is_audio(content_type: str) -> bool:
-    return content_type.startswith(AUDIO_MIME_PREFIXES)
 
 # ---- main conversion -------------------------------------------------------
 
@@ -98,22 +94,6 @@ def documentreference_to_medkit(dr_json: dict):
         text = _extract_text_from_pdf(blob)
         return TextDocument(text=text, metadata={**meta, "extracted_from_pdf": True})
 
-    if _is_audio(ct):
-        # For audio, load into a MemoryAudioBuffer; you may decode to raw PCM first.
-        # If bytes are a compressed format (e.g., MP3), decode with pydub or soundfile.
-        # Below shows a simple WAV path using soundfile as an example.
-        import soundfile as sf
-        import numpy as np
-        with io.BytesIO(blob) as f:
-            data, samplerate = sf.read(f, always_2d=True)  # shape: (samples, channels)
-        nb_samples, nb_channels = data.shape[0], data.shape[1]
-        # Convert float32 PCM to int16-like range if needed by your pipeline
-        buf = MemoryAudioBuffer(sample_rate=samplerate,
-                                nb_samples=nb_samples,
-                                nb_channels=nb_channels)
-        # MemoryAudioBuffer expects you to override samples via subclass in some versions;
-        # if you need actual samples later, consider FileAudioBuffer or extending MemoryAudioBuffer.
-        return AudioDocument(audio=buf, metadata=meta)
 
     # Fallback: treat as bytes you’ll process later; store as a “container” TextDocument with a note
     placeholder = f"[{ct} binary content; {len(blob)} bytes]"

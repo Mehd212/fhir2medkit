@@ -1,0 +1,55 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "example-lab-report-002",
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "33747-0",
+        "display": "General laboratory studies"
+      }
+    ],
+    "text": "Laboratory Report"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://ihe.net/xds/connectathon/classCodes",
+          "code": "Laboratory",
+          "display": "Laboratory Report"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/67890",
+    "display": "Jane Smith"
+  },
+  "date": "2024-01-20T08:15:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/dr-johnson",
+      "display": "Dr. Johnson, MD"
+    }
+  ],
+  "custodian": {
+    "reference": "Organization/lab-001",
+    "display": "Central Laboratory"
+  },
+  "description": "Complete blood count and basic metabolic panel results for Jane Smith",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/pdf",
+        "language": "en-US",
+        "url": "file://example/lab_report.pdf",
+        "size": 2048,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "title": "Laboratory Report - Jane Smith - 2024-01-20",
+        "creation": "2024-01-20T08:15:00Z"
+      }
+    }
+  ]
+}
